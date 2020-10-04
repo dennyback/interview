@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package contract;
+
+option go_package = ".;contract";
+
+service Users {
+    rpc GetUser (GetUserRequest) returns (GetUserResponse) {
+    }
+
+    rpc AddUser (AddUserRequest) returns (AddUserResponse) {
+    }
+}
+
+message GetUserRequest {
+    message User {
+        string id = 1;
+    }
+    User user = 1;
+}
+
+message GetUserResponse {
+    message User {
+        uint32 id = 1;
+        string first_name = 2;
+        string last_name = 3;
+    }
+    User user = 1;
+}
+
+message AddUserRequest {
+    message User {
+        string first_name = 1;
+        string last_name = 2;
+    }
+    User user = 1;
+}
+
+message AddUserResponse {
+    message User {
+        uint32 id = 1;
+        string first_name = 2;
+        string last_name = 3;
+    }
+    User user = 1;
+}
