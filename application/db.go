@@ -30,6 +30,8 @@ func NewDB() *DB {
 
 func (d *DB) FindByID(ID string, ctx context.Context) *User {
 	var user User
+
+	//select * from user where id = ?
 	d.db.First(&user, ID)
 
 	return &user
@@ -37,7 +39,6 @@ func (d *DB) FindByID(ID string, ctx context.Context) *User {
 
 func (d *DB) CreateNewUser(fistName, lastName string) *User {
 	user := User{FirstName: fistName, LastName: lastName}
-
 	d.db.Save(&user)
 
 	return &user
